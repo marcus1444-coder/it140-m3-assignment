@@ -10,18 +10,24 @@
 
 START paycheck_calculator
 
-    TODO: Obtain the required program input.
+// Define constants
+SET REGULAR_RATE = 20
+SET OVERTIME_RATE = 30
+SET REGULAR_HOURS_LIMIT = 40
 
-    IF TODO: Specify the condition for the applicable pay rule.
-        TODO: List the processing steps for the true decision path.
-    ELSE
-        TODO: List the processing steps for the false decision path.
-    ENDIF
+// Input step
+DISPLAY "Enter the number of hours worked: "
+INPUT hours_worked
 
-    TODO: Output the calculated weekly paycheck.
+// Decision branching and processing steps 
+IF hours_worked > REGULAR_HOURS_LIMIT THEN
+    SET regular_pay = REGULAR_HOURS_LIMIT * REGULAR_RATE
+    SET overtime_hours = hours_worked - REGULAR_HOURS_LIMIT
+    SET overtime_pay = overtime_hours * OVERTIME_RATE
+    SET weekly_pay = regular_pay + overtime_pay
+ELSE
+    SET weekly_pay = hours_worked * REGULAR_RATE
+ENDIF
 
-END paycheck_calculator
-
-
-# === References ===
-# TODO: List outside sources or assistance you actually used, or delete this line.
+// Output step
+DISPLAY "Weekly Pay: $" + weekly_pay
